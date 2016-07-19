@@ -1,13 +1,27 @@
 
 $('#btnPedAgregar').click(function(){
-	var value = $('#pedId').val();
-	var route = "http://localhost:8000/pedido/"+btn.value+"/edit";
+	var value = 0;
+	$('select#pedId').on('change', function(){
+		valor = $(this).val();
+		return valor;
+	});
+	var route = "http://localhost:8000/pedido/"+$('#pedId option:selected').val()+"/edit";
+	var val1 = $("#nombre_producto").val(), val2 = $("#cantidad").val(), val3 = $("#costo_unitario").val(), val4 = 0 + 0;
+	val4 = $("#costo_total").val();
+
 
 	$.get(route, function(res){
-		$("#nombre_producto").val($('#nombre_producto').val + res.nombre_producto + "/");
-		$("#cantidades").val($("#cantidad").val() + res.cantidad + "/");
-		$("#costo_unitario").val($("costo_unitario").val() + res.costo_unitario + "/");
-		$("#costo_total").val($("costo_total") + (res.costo_unitario * $('#cantidad').val()));
+		var result = res.costo_producto * $('#cantidades').val();
+		
+		val1 = val1 + "/" + res.nombre_producto;
+		val2 = val2 + "/" + $("#cantidades").val();
+		val3 = val3 + "/" + res.costo_producto;
+		val4 = Number(val4) + Number(result);
+		
+		$("#nombre_producto").val(val1);
+		$("#cantidad").val(val2);
+		$("#costo_unitario").val(val3);
+		$("#costo_total").val(val4);
 	});
 });
 

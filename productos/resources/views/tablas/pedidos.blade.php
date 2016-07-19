@@ -11,7 +11,7 @@
 	<tr>
 		<td style="text-transform: uppercase;">{!!$Producto->nombre_producto!!}</td>
 		<td>{!!$Producto->cantidad!!} litros</td>
-		<td><b>Bsf </b>{!!number_format($Producto->costo_unitario, 2, ',', ' ')!!}</td>
+		<td><b>Bsf </b>{!!$Producto->costo_unitario!!}</td>
 		<td><b>Bsf </b>{!!number_format($Producto->costo_total, 2, ',', ' ')!!}</td>
 		<td>{!!date("d",strtotime($Producto->created_at))!!} de {!!date("M", strtotime($Producto->created_at))!!}</td>
 		<td>

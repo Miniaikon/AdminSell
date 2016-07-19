@@ -16,9 +16,9 @@
          <input type="text" name="nombre_producto" class="form-control form-black" id="nombre_producto">
        </div>
        <div class="form-group">
-         <input type="text" name="cantidad" id="cantidad">
-         <input type="text" name="costo_unitario" id="costo_unitario">
-         <input type="text" name="costo_total" id="costo_total">
+         <input type="hidden" name="cantidad" id="cantidad">
+         <input type="hidden" name="costo_unitario" id="costo_unitario">
+         <input type="hidden" name="costo_total" id="costo_total">
          <button type="submit" class="btn btn-yellow">Ingresar</button>
        </div>
        {!!Form::close()!!}

@@ -90,6 +90,7 @@
 
 {!!Html::script('js/jquery-1.12.4.min.js')!!}
 {!!Html::script('js/bootstrap.min.js')!!}
+{!!Html::script('js/script.js')!!}
 @yield('scripts')
 <script>
 	$(function () {

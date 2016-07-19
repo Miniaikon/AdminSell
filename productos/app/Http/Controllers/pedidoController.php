@@ -11,23 +11,19 @@ use \Productos\Productos;
 class pedidoController extends Controller
 { 
     public function store(Request $request){
-        $Pd = Productos::orderBy('id', 'asc')->where('nombre_producto', $request['nombre_producto'])->get();
-        foreach ($Pd as $P) {
-            $costo = $P->costo_producto;
-        };
-    	$diaria = pedido::create([
-    		'nombre_producto' => $request['nombre_producto'],
-    		'cantidad' 		  => $request['cantidad'],
-    		'costo_unitario'  => $costo,
-    		'costo_total'     => $costo * $request['cantidad'],
+    	pedido::create([
+    		'nombre_producto' => substr($request['nombre_producto'],1),
+    		'cantidad' 		  => substr($request['cantidad'],1),
+    		'costo_unitario'  => substr($request['costo_unitario'],1),
+    		'costo_total'     => $request['costo_total'],
     	]);
         return redirect()->back();
     	
     }
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $Pd = Productos::find($id);
-        return response()->json();
+        return response()->json($Pd);
     }
 
     public function destroy($id){

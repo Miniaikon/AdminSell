@@ -22,7 +22,7 @@
 		</div>
 		<div class="col-md-6">
 			<input type="hidden" id="clearIdB" value="{!!$Deudas->id!!}">
-			<button  class="btn btn-red btn-sm" id="deudaB"><span class="glyphicon glyphicon-remove"></span></button>
+			<button class="btn btn-red btn-sm" id="deudaB"><span class="glyphicon glyphicon-remove"></span></button>
 		</div>
 	</tr>
 	@endif

@@ -29,7 +29,7 @@
 			$.ajax({
 				url: route,
 				headers: {'X-CSRF-TOKEN': token},
-				type: 'DELETE',
+				type: 'PUT',
 				dataType: 'json',
 				data: {abonado: dato,
 				abono_deuda: dato2},
@@ -74,6 +74,10 @@
 		$('#deudaTabla').load('/deudas');
 	};
 	
+
+
+
+
 	
 </script>
 
