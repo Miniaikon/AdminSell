@@ -1,11 +1,6 @@
 
 $('#btnPedAgregar').click(function(){
-	var value = 0;
-	$('select#pedId').on('change', function(){
-		valor = $(this).val();
-		return valor;
-	});
-	var route = "http://localhost:8000/pedido/"+$('#pedId option:selected').val()+"/edit";
+	var route = "/pedido/"+$('#pedId option:selected').val()+"/edit";
 	var val1 = $("#nombre_producto").val(), val2 = $("#cantidad").val(), val3 = $("#costo_unitario").val(), val4 = 0 + 0;
 	val4 = $("#costo_total").val();
 
@@ -13,9 +8,9 @@ $('#btnPedAgregar').click(function(){
 	$.get(route, function(res){
 		var result = res.costo_producto * $('#cantidades').val();
 		
-		val1 = val1 + "/" + res.nombre_producto;
-		val2 = val2 + "/" + $("#cantidades").val();
-		val3 = val3 + "/" + res.costo_producto;
+		val1 = val1 + "/ " + res.nombre_producto + " ";
+		val2 = val2 + "/ " + $("#cantidades").val() + " ";
+		val3 = val3 + "/ " + res.costo_producto + " ";
 		val4 = Number(val4) + Number(result);
 		
 		$("#nombre_producto").val(val1);
