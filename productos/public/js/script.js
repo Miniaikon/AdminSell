@@ -19,5 +19,3 @@ $('#btnPedAgregar').click(function(){
 		$("#costo_total").val(val4);
 	});
 });
-
-

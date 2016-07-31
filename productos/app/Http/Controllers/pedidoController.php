@@ -30,4 +30,8 @@ class pedidoController extends Controller
     	pedido::destroy($id);
     	return back()->withInput();
     }
+    public function show($id){
+        $Producto = pedido::find($id);
+        return view('pages.pedido.detalle', compact('Producto'));
+    }
 }

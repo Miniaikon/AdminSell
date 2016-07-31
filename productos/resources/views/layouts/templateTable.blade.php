@@ -4,6 +4,7 @@
 	<title>@yield('title')</title>
 	{!!Html::style('css/bootstrap.min.css')!!}
   {!!Html::style('css/style.css')!!}
+  {!!Html::style('css/font-awesome.min.css')!!}
   @yield('header')
 	<meta name="viewport" content="initial-scale=1">
 

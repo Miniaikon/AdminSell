@@ -20,7 +20,7 @@ class deudaController extends Controller
     public function destroy($id)
     {
     	Deuda::destroy($id);
-    	return response()->json();
+    	return redirect()->back();
     }
 
     public function edit($id)

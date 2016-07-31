@@ -7,7 +7,7 @@
 					type: "column",
 					dataPoints: [
 			@foreach($Money as $Moneys)
-						{ y: {!!$Moneys->ganancia!!}, label: "{!!date("D d",strtotime($Moneys->created_at))!!}" },
+						{ y: {!!$Moneys->ganancia!!}, label: "{!!date("M d",strtotime($Moneys->created_at))!!}" },
 			@endforeach
 					]
 				}]

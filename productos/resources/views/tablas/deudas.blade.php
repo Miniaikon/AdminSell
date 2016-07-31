@@ -21,8 +21,9 @@
 			<button value="{!!$Deudas->id!!}" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#myModal" OnClick="Mostrar(this);"><span class="glyphicon glyphicon-piggy-bank"></span></button>
 		</div>
 		<div class="col-md-6">
-			<input type="hidden" id="clearIdB" value="{!!$Deudas->id!!}">
-			<button class="btn btn-red btn-sm" id="deudaB"><span class="glyphicon glyphicon-remove"></span></button>
+			{!!Form::open(['route'=>['deuda.destroy', $Deudas->id], 'method'=>'DELETE'])!!}
+				<button class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+			{!!Form::close()!!}
 		</div>
 	</tr>
 	@endif

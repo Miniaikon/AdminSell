@@ -279,3 +279,12 @@ select {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+#idPedD {
+	color: #2ecc71;
+	display:none; 
+	font-size: 20px;
+	float: right;
+}
+#producto:hover > #idPedD {
+	display: block;
+}

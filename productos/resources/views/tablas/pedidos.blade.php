@@ -9,16 +9,18 @@
 	</tr>
 @foreach($Product as $Producto)
 	<tr>
-		<td style="text-transform: uppercase;">{!!$Producto->nombre_producto!!}</td>
+		<td style="text-transform: uppercase;" id="producto">
+			{!!$Producto->nombre_producto!!}</td>
 		<td>{!!$Producto->cantidad!!} litros</td>
 		<td><b>Bsf </b>{!!$Producto->costo_unitario!!}</td>
 		<td><b>Bsf </b>{!!number_format($Producto->costo_total, 2, ',', ' ')!!}</td>
 		<td>{!!date("d",strtotime($Producto->created_at))!!} de {!!date("M", strtotime($Producto->created_at))!!}</td>
-		<td>
-			{!!Form::open(['route'=>['pedido.destroy', $Producto->id], 'method'=>'DELETE'])!!}
-				<button class="btn btn-red btn-sm"><span data-toggle="tooltip" title="¿Borra?" data-placement="top" class="glyphicon glyphicon-remove"></span></button>
-			{!!Form::close()!!}
-		</td>
+		<td>{!!Form::open(['route'=>['pedido.destroy', $Producto->id], 'method'=>'DELETE'])!!}
+			<div class="btn-group-sm btn-group">
+				<a href="pedidos/{!!$Producto->id!!}/detalle" class="btn btn-yellow"><span id="idProducto" class="fa fa-eye"></span></a>
+				<button class="btn btn-red"><span class="glyphicon glyphicon-remove"></span></button>
+			</div>
+		{!!Form::close()!!}</td>
 	</tr>
 @endforeach
 </table> 

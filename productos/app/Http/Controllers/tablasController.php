@@ -22,9 +22,10 @@ class tablasController extends Controller
     	$Money = Diaria::orderBy('created_at', 'desc')->paginate(10);
     	return view('tablas.ganancia',compact('Money'));
     }
-    public function pedido(){
-    	$Product = pedido::orderBy('created_at', 'desc')->paginate(10);
-    	return view('tablas.pedidos',compact('Product'));
+    public function pedido($id){
+    	$Producto = pedido::find($id);
+        $Money = Diaria::where('id_pedido', $id)->orderBy('created_at', 'ASC')->paginate(30);
+    	return view('pages.pedido.detalle',compact('Producto','Money'));
     }
     public function deuda(){
         $Deuda = Deuda::orderBy('created_at', 'desc')->paginate(10); 

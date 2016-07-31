@@ -20,7 +20,7 @@ Route::resource('inventory', 'inventarioController');
 Route::resource('note', 'noteController');
 
 Route::get('diaria', 'tablasController@daily');
-Route::get('pedidos', 'tablasController@pedido');
+Route::get('pedidos/{id}/detalle', 'tablasController@pedido');
 Route::get('deudas', 'tablasController@deuda');
 Route::get('show', 'tablasController@show');
 Route::get('comming', 'tablasController@comming');
