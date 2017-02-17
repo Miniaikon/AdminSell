@@ -40,4 +40,8 @@ class tablasController extends Controller
         $Money = Diaria::orderBy('created_at', 'asc')->paginate(30);
         return view('comming', compact('Money'));
     }
+    public function login(){
+       
+        return view('pages.login');
+    }
 }

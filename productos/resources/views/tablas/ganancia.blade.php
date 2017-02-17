@@ -1,5 +1,5 @@
 <!-- Modal ganancia -->
-<div class="modal fade 2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade 2" tabindex="-1" style="color: black;" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -7,6 +7,7 @@
 			    <h4 class="modal-title" id="gridSystemModalLabel">Venta de hoy</h4>
 			</div>
 			<div class="modal-body">
+				<?php $ped = 0 ?>
 				<?php $pedid = \Productos\pedido::orderBy('created_at', 'desc')->paginate(1) ?>
 				{!!Form::open(['route'=>'daily.store', 'method'=>'post'])!!}
 				<div class="form-group">

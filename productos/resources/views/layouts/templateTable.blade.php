@@ -27,27 +27,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/inventory">Productos <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        <li><a href="{!!route('inventory.index')!!}">Productos <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
         <!-- Dropdown Notas -->
         <li class="dropdown">
          {!!$Nota = \Productos\Nota::orderBy('created_at', 'desc')->paginate(5)!!}
-          <a href="#" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="<a href='/note' class='btn btn-default'>New</a>" data-content="<div id='online'>
+          <a href="#" class="dropdown-toggle" data-container="body" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="<a href='{!!route('note.index')!!}' class='btn btn-default'>New</a>" data-content="<div id='online'>
           <table class='table table-striped'> 
       @foreach($Nota as $Note)
       <tr>

@@ -1,4 +1,5 @@
-<table class="table table-hover table-altern"lass="table" border="1">
+<table class="table table-hover table-altern" class="table" border="1">
+	<thead>
 	<tr class="thead">
 		<th>Nombre</th>
 		<th>Deuda</th>
@@ -6,26 +7,30 @@
 		<th>Fecha</th>
 		<th><span class="glyphicon glyphicon-cog"></span></th>
 	</tr>
+	</thead>
+	
 	<?php $deben = 0; $abono = 0; ?>
 @foreach($Deuda as $Deudas)
 <?php $deben = $deben + $Deudas->monto_deuda; $abono = $abono + $Deudas->abono_deuda;?>
 	@if($Deudas->abono_deuda >= $Deudas->monto_deuda)
 	@else
-	<tr>
-		<td style="text-transform: uppercase;">{!!$Deudas->nombre_deuda!!}</td>
-		<td>Bsf {!!number_format($Deudas->monto_deuda, 2, ',', '.')!!}</td>
-		<td>Bsf {!!number_format($Deudas->abono_deuda, 2, ',', '.')!!}</td>
-		<td>{!!$Deudas->created_at!!}</td>
-		<td>
-		<div class="col-md-6">
-			<button value="{!!$Deudas->id!!}" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#myModal" OnClick="Mostrar(this);"><span class="glyphicon glyphicon-piggy-bank"></span></button>
-		</div>
-		<div class="col-md-6">
-			{!!Form::open(['route'=>['deuda.destroy', $Deudas->id], 'method'=>'DELETE'])!!}
-				<button class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
-			{!!Form::close()!!}
-		</div>
-	</tr>
+	<tbody id="deuda">
+		<tr id="{{ $Deudas->id }}">
+			<td style="text-transform: uppercase;">{!!$Deudas->nombre_deuda!!}</td>
+			<td>Bsf {!!$Deudas->monto_deuda!!}</td>
+			<td>Bsf {!!$Deudas->abono_deuda!!}</td>
+			<td>{!!$Deudas->created_at!!}</td>
+			<td>
+				<button value="{!!$Deudas->id!!}" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#myModal" OnClick="Mostrar(this);">
+					<span class="glyphicon glyphicon-piggy-bank"></span>
+				</button>
+				<!-- <a href="{{ route('deuda.destroy', $Deudas->id) }}" class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></a> -->
+				<input type="hidden" id="clearIdD{{ $Deudas->id }}" value="{{ $Deudas->id }}">
+				<button id="deudaRem" class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+			</td>
+		</tr>
+
+</tbody>
 	@endif
 @endforeach
 </table>
@@ -41,4 +46,4 @@
 </div>
 </div>
 <div class="panel-footer">
-<b>Total deuda: </b> {!!number_format($deben - $abono, 2, ',', '.')!!} Bsf
+<b>Total deuda: </b> {!!$deben - $abono!!} Bsf

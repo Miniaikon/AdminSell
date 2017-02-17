@@ -16,11 +16,34 @@ Route::get('/', 'tablasController@index');
 Route::resource('daily', 'dailyController');
 Route::resource('pedido', 'pedidoController');
 Route::resource('deuda', 'deudaController');
+Route::get('deuda/{id}/destroy',[
+  'uses' => 'deudaController@destroy', 
+  'as' => 'deuda.destroy'
+]);
 Route::resource('inventory', 'inventarioController');
 Route::resource('note', 'noteController');
 
-Route::get('diaria', 'tablasController@daily');
-Route::get('pedidos/{id}/detalle', 'tablasController@pedido');
-Route::get('deudas', 'tablasController@deuda');
-Route::get('show', 'tablasController@show');
-Route::get('comming', 'tablasController@comming');
+Route::get('diaria',[
+  'uses' => 'tablasController@daily', 
+  'as' => 'diaria'
+]);
+Route::get('pedidos/{id}/detalle',[
+  'uses' => 'tablasController@pedido', 
+  'as' => 'pedido.detalle'
+]);
+Route::get('show',[
+  'uses' => 'tablasController@show', 
+  'as' => 'show'
+]);
+Route::get('deudas',[
+  'uses' => 'tablasController@deuda', 
+  'as' => 'descuento.detalles'
+]);
+Route::get('comming',[
+  'uses' => 'tablasController@comming', 
+  'as' => 'comming'
+]);
+Route::get('login',[
+  'uses' => 'tablasController@login', 
+  'as' => 'login'
+]);

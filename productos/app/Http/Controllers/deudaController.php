@@ -13,14 +13,15 @@ class deudaController extends Controller
     public function store(Request $request)
     {
     	$Deuda = Deuda::create($request->all());
-    	return response()->json();
+    	return response()->json($Deuda);
     	
     }
 
     public function destroy($id)
     {
     	Deuda::destroy($id);
-    	return redirect()->back();
+    	//return redirect()->back();
+        return response()->json();
     }
 
     public function edit($id)
@@ -37,7 +38,7 @@ class deudaController extends Controller
             'abono_deuda' => $request['abonado'] + $request['abono_deuda'],
             ]);
         $Deuda->save();
-        return response()->json();
+        return response()->json($Deuda);
      }
  }
 }

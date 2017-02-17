@@ -33,8 +33,10 @@
 				dataType: 'json',
 				data: {abonado: dato,
 				abono_deuda: dato2},
+				success: function(res){
+				$('#'+res.id).html('<td style="text-transform: uppercase;">'+res.nombre_deuda+'</td><td>Bs.'+res.monto_deuda+'</td><td>Bs.'+res.abono_deuda+'</td><td>'+res.created_at+'</td><td><button value="'+res.id+'" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#myModal" OnClick="Mostrar(this);"><span class="glyphicon glyphicon-piggy-bank"></span></button> <a href="deuda/'+res.id+'/destroy" class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></a></td>');
+				}
 			});
-			carga();
 		};
 	});
 	$("#deudaA").on('click',function(){
@@ -43,8 +45,6 @@
 		var route = "/deuda";
 		var token = $("#token").val();
 
-		console.log("hola");
-
 		$.ajax({
 			url: route,
 			headers: {'X-CSRF-TOKEN': token},
@@ -52,12 +52,15 @@
 			dataType: 'json',
 			data: {nombre_deuda: dato,
 				monto_deuda: dato2},
+			success: function(res){
+					$('#deuda:first').before('<tbody id="deuda"><tr><td style="text-transform: uppercase;">'+res.nombre_deuda+'</td><td>Bs.'+res.monto_deuda+'</td><td>Bs.'+res.abono_deuda+'</td><td>'+res.created_at+'</td><td><button value="'+res.id+'" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#myModal" OnClick="Mostrar(this);"><span class="glyphicon glyphicon-piggy-bank"></span></button> <a href="deuda/'+res.id+'/destroy" class="btn btn-red btn-sm"><span class="glyphicon glyphicon-remove"></span></a></td></tr></tbody>');
+				},
 		});
-		carga();
 
 	});
-	$("#deudaB").on('click', function(){
-		var value = $("#clearIdB").val();
+	$("#deudaRem").on('click', function(){
+		var valor = $("#clearIdD").val();
+		var value = $("#clearIdD").val();
 		var route = "http://localhost:8000/deuda/"+value+"";
 		var token = $("#token").val();
 
@@ -67,12 +70,11 @@
 			type: 'DELETE',
 			dataType: 'json',
 			data: {id: value},
+			success: function(res){
+				$('#'+value).remove();
+			}
 		});
-		carga();
 	});
-	function carga(){
-		$('#deudaTabla').load('/deudas');
-	};
 	
 
 

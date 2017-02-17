@@ -16,7 +16,7 @@ class CreateDeudaTable extends Migration
             $table->increments('id');
             $table->string('nombre_deuda');
             $table->string('monto_deuda');
-            $table->string('abono_deuda');
+            $table->string('abono_deuda')->default('0');
             $table->string('pago');
             $table->rememberToken();
             $table->timestamps();
